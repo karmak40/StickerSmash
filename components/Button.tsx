@@ -5,10 +5,11 @@ import { FontAwesome } from '@expo/vector-icons';
 type Props = {
     label: string;          // Текст, отображаемый на кнопке (обязательный)
     theme?: 'primary';      // Опциональная тема кнопки (пока только 'primary')
+    onPress?: () => void;
 };
 
 
-export default function Button({ label, theme }: Props) {
+export default function Button({ label, theme, onPress }: Props) {
 // Если тема 'primary', рендерим специальную версию кнопки
     if (theme === 'primary') {
         return (
@@ -25,7 +26,7 @@ export default function Button({ label, theme }: Props) {
                   {/* Pressable - кликабельная область кнопки */}
             <Pressable
               style={[styles.button, { backgroundColor: '#fff' }]} // Белый фон
-              onPress={() => alert('You pressed a button.')}>
+              onPress={onPress}>
               {/* Иконка из FontAwesome */}
               <FontAwesome 
                 name="picture-o"  // Название иконки
